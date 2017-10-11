@@ -1,0 +1,19 @@
+{
+    "name": "tmukherjee13/php-sochat",
+    "description": "A realtime chat application written in PHP using websockets.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tarun M",
+            "email": "tmukherjee13@gmail.com"
+        }
+    ],
+    "require": {
+        "cboden/ratchet": "^0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sochat\\": "src"
+        }
+    },
+}
