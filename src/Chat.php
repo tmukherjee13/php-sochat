@@ -6,7 +6,7 @@ use Ratchet\MessageComponentInterface;
 
 class Chat implements MessageComponentInterface
 {
-    use \common\modules\chat\Chatter;
+    // use \common\modules\chat\Chatter;
     protected $clients;
 
     public function __construct()
@@ -34,26 +34,26 @@ class Chat implements MessageComponentInterface
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
 
         $data    = (array) json_decode($msg);
-        $msgData = $this->insertMessage($data);
+        // $msgData = $this->insertMessage($data);
 
-        if (isset($msgData['id'])) {
+        // if (isset($msgData['id'])) {
 
-            $return = [
-                "id"        => $msgData['id'],
-                "from_user" => $msgData['from_user'],
-                "to_user"   => $msgData['to_user'],
-                "message"   => $msgData['message'],
-                "username"  => $msgData['username'],
-                "sent"      => strtotime($msgData['created_at']),
-            ];
+        //     $return = [
+        //         "id"        => $msgData['id'],
+        //         "from_user" => $msgData['from_user'],
+        //         "to_user"   => $msgData['to_user'],
+        //         "message"   => $msgData['message'],
+        //         "username"  => $msgData['username'],
+        //         "sent"      => strtotime($msgData['created_at']),
+        //     ];
 
             foreach ($this->clients as $client) {
                 // if ($from !== $client) {
                 // The sender is not the receiver, send to each client connected
-                $client->send(json_encode($return));
+                $client->send(json_encode($data));
                 // }
             }
-        }
+        // }
     }
 
     public function onClose(ConnectionInterface $conn)
