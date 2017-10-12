@@ -6,7 +6,7 @@ use Ratchet\MessageComponentInterface;
 
 class Chat implements MessageComponentInterface
 {
-    // use \common\modules\chat\Chatter;
+    use \Sochat\Chatter;
     protected $clients;
 
     public function __construct()
